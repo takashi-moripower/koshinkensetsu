@@ -1,0 +1,14 @@
+.sample {
+  background-image: url("../image/sample/1115_02top.png");
+  background-repeat: no-repeat;
+  background-size: 1110px;
+  width: 1110px;
+  height: 1512px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -555px;
+  opacity: 0.5;
+  z-index: 1; }
+
+/*# sourceMappingURL=index.css.map */
