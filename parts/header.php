@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php
 $navi_items = [
-		['label' => '会社案内', 'icon' => 'building', 'url' => ''],
-		['label' => '業務内容', 'icon' => 'gavel', 'url' => ''],
-		['label' => '採用情報', 'icon' => 'user', 'url' => ''],
+		['label' => '会社案内', 'icon' => 'building', 'url' => 'guide'],
+		['label' => '業務内容', 'icon' => 'gavel', 'url' => 'business'],
+		['label' => '採用情報', 'icon' => 'user', 'url' => 'recruit'],
 ];
 ?>
 <html>
@@ -37,7 +37,8 @@ $navi_items = [
 				<?php
 				foreach ($navi_items as $item) {
 					$url = Html::url( $item['url']);
-					$navi = "<a href='{$url}' class='header-nav float-sm-right hidden-xs-down'><i class='fa fa-fw fa-{$item['icon']}'></i><br>{$item['label']}</a>" . $navi;
+					$active = ( $item['url'] == Main::$file_name ) ? 'header-nav-active' : '';
+					$navi = "<a href='{$url}' class='header-nav {$active} float-sm-right hidden-xs-down'><i class='fa fa-fw fa-{$item['icon']}'></i><br>{$item['label']}</a>" . $navi;
 				}
 				echo $navi;
 				?>

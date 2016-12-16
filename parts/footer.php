@@ -1,19 +1,43 @@
 <?php
 $navi_items = [
-	'トップページ' => '',
-	'会社案内' => '',
-	'業務内容' => '',
-	'採用情報' => '',
+	[
+		'label'=>'トップページ',
+		'url'=>'',
+	],
+	[
+		'label'=>'会社案内',
+		'url'=>'guide',
+	],
+	[
+		'label'=>'業務内容',
+		'url'=>'business',
+	],
+	[
+		'label'=>'採用情報',
+		'url'=>'recruit',
+	],
+	[
+		'label'=>'お問い合わせ',
+		'url'=>'',
+	],
+	[
+		'label'=>'プライバシーポリシー',
+		'url'=>'privacy',
+	],
 ];
 ?>
 <div class="footer">
-	<div class="container text-xs-center">
-		<div class="footer-nav col-xs-24 col-md-18 offset-md-3 col-lg-12 offset-lg-6">
-			<?php foreach ($navi_items as $label => $url): ?>
-				<div class="col-xs-12 col-sm-6">
-					<a href="<?= $url ?>"><?= $label ?></a>
-				</div>
-			<?php endforeach ?>
+	<div class="footer-nav-wrap">
+		<div class="container text-xs-center">
+			<div class="footer-nav clearfix">
+				<div class="footer-nav-item"><a href="<?= Html::url("") ?>">トップページ</a></div>
+				<div class="footer-nav-item"><a href="<?= Html::url("guide") ?>">会社案内</a></div>
+				<div class="footer-nav-item"><a href="<?= Html::url("business") ?>">業務案内</a></div>
+				<br class="hidden-md-up"/>
+				<div class="footer-nav-item"><a href="<?= Html::url("recruit") ?>">採用情報</a></div>
+				<div class="footer-nav-item"><a href="<?= Html::url("inquiry") ?>">お問い合わせ</a></div>
+				<div class="footer-nav-item"><a href="<?= Html::url("privacy") ?>">プライバシーポリシー</a></div>
+			</div>
 		</div>
 	</div>
 	<div class="container text-xs-center">

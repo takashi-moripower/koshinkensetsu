@@ -5,9 +5,8 @@
 $color-main:#5CADC7;
 $color-accent:#57BEBA;
 $color-pink:#ED6571;
-
-
-
+$color-dark:#3C8CAD;
+$color-light:#82C0D3;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //		mixin
@@ -20,6 +19,61 @@ $color-pink:#ED6571;
 
 }
 
+@mixin font-default(){
+	font-family: verdana,"ヒラギノ丸ゴ ProN W4","Hiragino Maru Gothic ProN","メイリオ","Meiryo","ＭＳ Ｐゴシック","MS PGothic",Sans-Serif;
+}
+
+@mixin contents-default(){
+	//	padding-top:2rem;
+	padding-bottom:3rem;
+	h2{
+		margin-top:2rem;
+		margin-bottom:2rem;
+	}	
+	img.image{
+		max-width:100%;
+		width:100%;
+	}
+}
+
+@mixin h3-square(){
+	h3{
+		&:before{
+			content:'■ ';
+		}
+		font-size:1.25rem;
+		margin-top:2rem;
+		margin-bottom:0.75rem;
+	}
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//		general
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.bg-blue{
+	background-color: $color-main;
+	color:white;
+	color:#333;
+}
+a.link-red{
+	display:inline-block;
+	padding:0.5rem 5rem;
+	background-color:$color-pink;
+	color:white;
+	font-weight:bold;
+	margin-top:1rem;
+	margin-bottom:1rem;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//		body
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+body{
+	@include font-default;
+	background-color:white;
+	//	color:$color-main;
+	color:#333;
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //		header
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,7 +88,8 @@ $color-pink:#ED6571;
 			.logo-mark{
 				margin-top:19px;
 				margin-left:17px;
-				width:68px;
+				//				width:68px;
+				width:60px;
 				max-width:22%;
 				height:auto;
 			}
@@ -50,6 +105,14 @@ $color-pink:#ED6571;
 
 		a.header-nav{
 			background-color:white;
+			color:$color-main;		
+			color:$color-dark;
+
+			&.header-nav-active{
+				background-color:$color-pink;
+				color:white;
+			}
+
 			height:	$header-height;
 			width: $header-height;
 			position:relative;
@@ -58,11 +121,13 @@ $color-pink:#ED6571;
 
 			text-align:center;
 			display:inline-block;
-			color:$color-main;		
 
 			i.fa{
-				font-size:56px;
+				font-size:48px;
+				margin-bottom:0.25rem;
 			}
+
+			font-size:80%;
 		}
 
 		@include media-breakpoint-down(sm) {
@@ -79,6 +144,7 @@ $color-pink:#ED6571;
 				width:$header-height * 0.7;
 				height:$header-height * 0.7;
 				padding-top:10px;
+
 				font-size:.8rem;
 				i.fa{
 					font-size:30px;
@@ -92,6 +158,8 @@ $color-pink:#ED6571;
 		a.nav-item{
 			padding-top:0.15rem;
 			padding-bottom:0.15rem;
+			padding-left:0;
+			padding-right:0;
 			color:$color-main;
 			border-bottom:1px solid $color-main;
 			border-left:1px solid $color-main;
@@ -113,24 +181,32 @@ $color-pink:#ED6571;
 	background-color:$color-main;
 	color:white;
 	font-size:0.9rem;
-	padding-top:2rem;
-	div.footer-nav{
 
-		div{
-
-			border-right:1px solid white;
-
-			&:last-child{
-				border-right:none;
-			}
-
-			a{
-				color:white;
-			}
-			@include media-breakpoint-down(xs) {
-				margin-bottom:0.25rem;
-				&:nth-child(2n){
+	div.footer-nav-wrap{
+		background-color:white;
+		color:$color-main;
+		padding-top:.5rem;
+		padding-bottom:.5rem;
+		div.footer-nav{
+			.footer-nav-item{
+				display:inline-block;
+				padding-left:1.25rem;
+				padding-right:1.25rem;
+				border-right:1px solid $color-main;
+				&:last-child{
 					border-right:none;
+				}
+
+				a{
+					color:$color-main;
+					color:$color-dark;
+				}
+
+				@include media-breakpoint-down(xs) {
+					margin-bottom:0.25rem;
+					&:nth-child(3){
+						border-right:none;
+					}
 				}
 			}
 		}
@@ -145,8 +221,12 @@ $color-pink:#ED6571;
 
 	.address{
 		line-height:2rem;
+		margin-bottom:2rem;
 	}
 }
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //		index
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -155,12 +235,11 @@ body.page-index{
 		background-color:$color-accent;
 		.img{
 			position:relative;
-
 			.text01{
 				position:absolute;
 				top:1rem;
 				left:1rem;
-				font-size:36px;
+				font-size:40px;
 				color:white;
 				text-shadow:black 0 0 6px;
 				@include media-breakpoint-down(sm) {
@@ -168,48 +247,248 @@ body.page-index{
 				}
 			}
 		}
-		.text02{
-			color:white;
-			height:100px;
-			line-height:100px;
-			font-size:56px;
-			@include media-breakpoint-down(sm) {
-				font-size:24px;
-				height:50px;
-				line-height:50px;
-			}
+	}
 
-			.shadow{
-				color:$color-accent;
-				@include fuchi(white,2px);
-			}
+	.text02{
+		color:white;
+		height:100px;
+		line-height:100px;
+		font-size:56px;
+
+		@include media-breakpoint-down(sm) {
+			font-size:24px;
+			height:50px;
+			line-height:50px;
 		}
+
+		.shadow{
+			color:$color-accent;
+			@include fuchi(white,2px);
+		}
+	}
+
+	h2.caption{
+		border:4px solid $color-pink;
+		font-size:1.25rem;
+		padding:0.5rem;
+		margin: 0.5rem 2rem 1.5rem;
+		line-height:2.25rem;
+		background-color:white;
 	}
 
 
 }
 
-.contents{
-	background-color:$color-main;
-	color:white;
-
-	h2{
-		border:4px solid white;
-		font-size:1rem;
-		padding:0.70rem;
-		margin:1rem 0;
-	}
-
+.index02{
+	padding-bottom:3rem;
 	&>p{
 		line-height:150%;
 	}
-	a.link-red{
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//		guide
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+body.page-guide{
+	h2{
+		margin-bottom:3rem;
+	}
+	p{
+		line-height:2rem;
+	}
+
+	.guide01{
+		@include contents-default();
+	}
+
+	.guide02{
+		@include contents-default();
+
+		table.table{
+			border-collapse:separate;
+			border-spacing:0 1rem;
+
+			td,th{
+				padding:0;
+				border:none;
+				//				background-color:$color-light;
+				background-color:white;
+			}
+
+			th{
+				width:25%;
+				text-align:center;
+				div.label{
+					//					color:$color-main;
+					color:#333;
+					width:100%;
+					padding:0.125rem 0.25rem;
+				}
+				//				background-color:$color-light;
+				background-color:white;
+				background-color:$color-light;
+			}
+
+			td{
+				width:75%;
+				padding-left:1rem;
+
+				color:#333;
+
+				.panel{
+					//					border:2px solid $color-dark;
+					.panel-heading{
+						//						background-color:$color-dark;
+						&:before{
+							content:'■ ';
+						}
+						padding:0.125rem 0;
+						position:relative;
+						left:-.5rem;
+					}
+					margin-bottom:0.5rem;
+					&:last-of-type{
+						margin-bottom:0;
+					}
+					.panel-body{
+						padding:0.25rem;
+					}
+				}
+			}
+		}
+
+	}
+	.guide03{
+		@include contents-default();
+		background-color:#EEF7F9;
+
+		table.table{
+			border:2px solid $color-main;
+			th{
+				background-color:$color-main;
+				color:white;
+				border:none;
+				width:20%;
+				position:relative;
+				&:after{
+					content:'';
+					width:90%;
+					position:absolute;
+					bottom:0;
+					left:10%;
+					border-bottom:1px solid white;
+				}
+			}
+			td{
+				text-align:left;
+				border:$color-main;
+				//				color:$color-main;
+				border:none;
+				width:80%;
+				position:relative;
+
+				&:after{
+					content:'';
+					width:97.5%;
+					position:absolute;
+					bottom:0;
+					left:0%;
+					border-bottom:1px solid $color-main;
+				}
+			}
+
+			tbody tr:last-child{
+				td,th{
+					&:after{
+						border:none;
+					}
+				}
+			}
+		}
+
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//		business
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+body.page-business{
+	.business01{
+		@include contents-default();
+		h3{
+			font-size:1.25rem;
+			line-height:2rem;
+			padding:0 0.5rem;
+		}
+	}
+
+	.business02{
+		@include contents-default();
+		h3{
+			font-size:1.125rem;
+			line-height:2rem;
+			padding:0 0.5rem;
+			background-color:$color-dark;
+			margin-bottom:0;
+		}
+
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//		recruit
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+body.page-recruit{
+	.recruit01{
+		@include contents-default();
+	}
+
+	.recruit02{
+		@include contents-default();
+
+		table tbody {
+			td{
+				white-space:nowrap;
+			}
+			th{
+				font-weight:normal;
+			}
+		}
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//		privacy
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+body.page-privacy{
+	.privacy01{
+		@include contents-default();
+	}
+
+	@include h3-square();
+
+	p{
+		padding-left:1rem;
+	}
+
+	ul{
+		padding-left:3rem;
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//		form
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+body.page-form{
+	.form01{
+		@include contents-default();
+	}
+	@include h3-square();
+
+	textarea,input[type="text"]{
+		max-width:100%;
+		width:100%;
+	}
+
+	form.inline{
 		display:inline-block;
-		padding:0.5rem 5rem;
-		background-color:$color-pink;
-		color:white;
-		font-weight:bold;
-		margin-top:1rem;
-		margin-bottom:1rem;
 	}
 }

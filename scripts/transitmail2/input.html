@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <title>興信建設</title>
+		<link rel="stylesheet" href="/koshin/css/style.css">		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
+		<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script><!-- Tether for Bootstrap --> 
+		<script src="../../bootstrap-4.0.0-alpha.5/dist/js/bootstrap.min.js" ></script>
+    </head>
+    <body class="page-form">
+		<div class="header">
+			<div class="container header01">
+				<div class="logo col-xs-24 col-sm-12">
+					<a href="/koshin/">
+						<img src="/koshin/image/mark.png" class="logo-mark">
+						<img src="/koshin/image/name.png" class="logo-name">
+					</a>
+				</div>
+				<a href='/koshin/recruit' class='header-nav header-nav-active float-sm-right hidden-xs-down'><i class='fa fa-fw fa-user'></i><br>採用情報</a><a href='/koshin/business' class='header-nav  float-sm-right hidden-xs-down'><i class='fa fa-fw fa-gavel'></i><br>業務内容</a><a href='/koshin/guide' class='header-nav  float-sm-right hidden-xs-down'><i class='fa fa-fw fa-building'></i><br>会社案内</a>			</div>
+			<div class="container header02 hidden-sm-up">
+				<div class="row header-nav2 text-xs-center">
+					<a class="col-xs-8 hidden-sm-up nav-item" href="/koshin/guide">
+						<i class="fa fa-fw fa-building"></i>
+						会社案内						</a>
+					<a class="col-xs-8 hidden-sm-up nav-item" href="/koshin/business">
+						<i class="fa fa-fw fa-gavel"></i>
+						業務内容						</a>
+					<a class="col-xs-8 hidden-sm-up nav-item" href="/koshin/recruit">
+						<i class="fa fa-fw fa-user"></i>
+						採用情報						</a>
+				</div>
+			</div>
+			<div class="header03 hidden-xs-down"></div>
+		</div>
+		<!--
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//	header
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		-->
+		<div class="form01">
+			<div class="container">
+				<div class="col-xs-24 col-lg-20 offset-lg-2">
+					<h2>お問い合わせ</h2>
+					<h3>
+						弊社に関するお問合せ、資料請求、お見積りのご依頼等については、電話やメールで受け付けております。					
+					</h3>
+					<p>
+						ＴＥＬ： 03-3313-3307<br>
+						ＦＡＸ： 03-3316-4534<br>
+						※お電話での受付時間：平日9:00～17:00<br>
+						※土日祝日・年末年始・夏季休暇期間は翌営業日以降の対応となりますのでご了承ください。<br>
+						（*）欄は必須入力です
+					</p>
+
+					<h3>
+						メールでのお問い合わせ
+					</h3>
+
+					{if:$global_errors}
+					<p><em>入力内容に誤りがあります。</em></p>
+					<div class="section">
+						<ul>
+							{loop:$global_errors}
+							<li><em>{$global_errors[]}</em></li>
+							{/loop:$global_errors}
+						</ul>
+					</div>
+					{/if:$global_errors}
+					<form method="post" action="index.php" enctype="multipart/form-data">
+						<table class="table">
+							<tbody>
+								<tr>
+									<th>お名前(*)</th>
+									<td>
+										<input type="text" name="お名前" value="{$お名前}" class="middle">
+										<input type="hidden" name="required[]" value="お名前">
+										{if:$required.お名前}
+										<div class="error"><em>{$required.お名前}</em></div>
+										{/if:$required.お名前}
+									</td>
+								</tr>
+								<tr>
+									<th>ふりがな（*）</th>
+									<td>
+										<input type="text" name="ふりがな" value="{$ふりがな}" class="middle">
+										<input type="hidden" name="required[]" value="ふりがな">
+										{if:$required.ふりがな}
+										<div class="error"><em>{$required.ふりがな}</em></div>
+										{/if:$required.ふりがな}
+									</td>
+								</tr>
+								<tr>
+									<th>メールアドレス</th>
+									<td>
+										<input type="text" name="メールアドレス" value="{$メールアドレス}" class="middle">
+									</td>
+								</tr>
+								<tr>
+									<th>TEL</th>
+									<td>
+										<input type="text" name="TEL" value="{$TEL}" class="middle">
+									</td>
+								</tr>
+								<tr>
+									<th>お問い合わせ内容(*)</th>
+									<td>
+										<textarea rows="6" name="お問い合わせ内容" class="wide">{$お問い合わせ内容}</textarea>
+										<input type="hidden" name="required[]" value="お問い合わせ内容">
+
+										{if:$required.お問い合わせ内容}
+										<div class="error"><em>{$required.お問い合わせ内容}</em></div>
+										{/if:$required.お問い合わせ内容}
+									</td>
+								</tr>
+								<tr>
+									<th>プライバシーポリシー</th>
+									<td>
+										<label>
+											<input type="checkbox" name="プライバシーポリシー確認" value="true" {$checked.プライバシーポリシー確認.1}>
+											<a href="../../privacy" target="_blank"><u><i class="fa fa-hand-o-right"></i> プライバシーポリシー</u></a> を確認し、内容に同意します
+										</label>
+										<input type="hidden" name="required[]" value="プライバシーポリシー確認">
+										{if:$required.プライバシーポリシー確認}
+										<div class="error"><em>{$required.プライバシーポリシー確認}</em></div>
+										{/if:$required.プライバシーポリシー確認}
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="text-xs-left">
+							<input type="submit" value="入力内容を確認する" class="btn btn-primary">
+							<button type="reset" class="btn btn-outline-primary">クリア</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!--
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//	footer
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		-->
+		<div class="footer">
+			<div class="footer-nav-wrap">
+				<div class="container text-xs-center">
+					<div class="footer-nav clearfix">
+						<div class="footer-nav-item"><a href="/koshin/">トップページ</a></div>
+						<div class="footer-nav-item"><a href="/koshin/guide">会社案内</a></div>
+						<div class="footer-nav-item"><a href="/koshin/business">業務案内</a></div>
+						<br class="hidden-md-up"/>
+						<div class="footer-nav-item"><a href="/koshin/recruit">採用情報</a></div>
+						<div class="footer-nav-item"><a href="/koshin/inquiry">お問い合わせ</a></div>
+						<div class="footer-nav-item"><a href="/koshin/privacy">プライバシーポリシー</a></div>
+					</div>
+				</div>
+			</div>
+			<div class="container text-xs-center">
+
+				<div class="name">
+					株式会社興信建設
+				</div>
+				<div class="address">
+					東京都杉並区成田西3丁目2番4号<br>
+					TEL:03-3313-3307
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

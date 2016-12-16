@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <title>興信建設</title>
+		<link rel="stylesheet" href="/koshin/css/style.css">		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
+		<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script><!-- Tether for Bootstrap --> 
+		<script src="../../bootstrap-4.0.0-alpha.5/dist/js/bootstrap.min.js" ></script>
+    </head>
+    <body class="page-form">
+		<div class="header">
+			<div class="container header01">
+				<div class="logo col-xs-24 col-sm-12">
+					<a href="/koshin/">
+						<img src="/koshin/image/mark.png" class="logo-mark">
+						<img src="/koshin/image/name.png" class="logo-name">
+					</a>
+				</div>
+				<a href='/koshin/recruit' class='header-nav header-nav-active float-sm-right hidden-xs-down'><i class='fa fa-fw fa-user'></i><br>採用情報</a><a href='/koshin/business' class='header-nav  float-sm-right hidden-xs-down'><i class='fa fa-fw fa-gavel'></i><br>業務内容</a><a href='/koshin/guide' class='header-nav  float-sm-right hidden-xs-down'><i class='fa fa-fw fa-building'></i><br>会社案内</a>			</div>
+			<div class="container header02 hidden-sm-up">
+				<div class="row header-nav2 text-xs-center">
+					<a class="col-xs-8 hidden-sm-up nav-item" href="/koshin/guide">
+						<i class="fa fa-fw fa-building"></i>
+						会社案内						</a>
+					<a class="col-xs-8 hidden-sm-up nav-item" href="/koshin/business">
+						<i class="fa fa-fw fa-gavel"></i>
+						業務内容						</a>
+					<a class="col-xs-8 hidden-sm-up nav-item" href="/koshin/recruit">
+						<i class="fa fa-fw fa-user"></i>
+						採用情報						</a>
+				</div>
+			</div>
+			<div class="header03 hidden-xs-down"></div>
+		</div>
+		<!--
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//	header
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		-->
+		<div class="form01">
+			<div class="container">
+				<div class="col-xs-24 col-lg-20 offset-lg-2">
+					<h2>求人応募フォーム</h2>
+					<p>
+						弊社、求人にご興味のある方は、下記フォームから必要事項を記入の上、送信して下さい。 (*)は必須入力です。
+					</p>
+					{if:$global_errors}
+					<p><em>入力内容に誤りがあります。</em></p>
+					<div class="section">
+						<ul>
+							{loop:$global_errors}
+							<li><em>{$global_errors[]}</em></li>
+							{/loop:$global_errors}
+						</ul>
+					</div>
+					{/if:$global_errors}
+					<form method="post" action="index.php" enctype="multipart/form-data">
+						<table class="table">
+							<tbody>
+								<tr>
+									<th>希望職種（*）</th>
+									<td>
+										<label>
+											<input type="radio" name="希望職種" value="型枠大工" {$checked.希望職種.型枠大工} {$checked.default}>
+											型枠大工
+										</label>
+										&nbsp;
+										<label>
+											<input type="radio" name="希望職種" value="現場監督" {$checked.希望職種.現場監督}>
+											現場監督
+										</label>
+									</td>
+								</tr>
+								<tr>
+									<th>経験年数</th>
+									<td>
+										<select name="経験年数">
+											<option value="未経験" {$selected.経験年数.未経験}>未経験</option>
+											<option value="5年未満" {$selected.経験年数.5年未満}>5年未満</option>
+											<option value="5年以上" {$selected.経験年数.5年以上}>5年以上</option>
+										</select>
+
+									</td>
+								</tr>
+								<tr>
+									<th>保有資格</th>
+									<td>
+										<label>
+											<input type="checkbox" name="保有資格[]" value="一級施工管理技士" {$checked.保有資格.一級施工管理技士}>
+											一級建築施工管理技士
+										</label>
+										<label>
+											<input type="checkbox" name="保有資格[]" value="二級施工管理技士" {$checked.保有資格.二級施工管理技士}>
+											二級建築施工管理技士
+										</label><br>
+										<label>
+											<input type="checkbox" name="保有資格[]" value="登録型枠基幹技能士" {$checked.保有資格.登録型枠基幹技能士}>
+											登録型枠基幹技能者
+										</label>
+										<label>
+											<input type="checkbox" name="保有資格[]" value="一級型枠技能士" {$checked.保有資格.一級型枠技能士}>
+											一級型枠施工技能士
+										</label><br>
+										<label>
+											<input type="checkbox" name="保有資格[]" value="その他" {$checked.保有資格.その他}>
+											その他
+										</label>
+									</td>
+								</tr>
+								<tr>
+									<th>お名前（*）</th>
+									<td>
+										<input type="text" name="お名前" value="{$お名前}" class="middle">
+										<input type="hidden" name="required[]" value="お名前">
+										{if:$required.お名前}
+										<div class="error"><em>{$required.お名前}</em></div>
+										{/if:$required.お名前}
+									</td>
+								</tr>
+								<tr>
+									<th>ふりがな（*）</th>
+									<td>
+										<input type="text" name="ふりがな" value="{$ふりがな}" class="middle">
+										<input type="hidden" name="required[]" value="ふりがな">
+										{if:$required.ふりがな}
+										<div class="error"><em>{$required.ふりがな}</em></div>
+										{/if:$required.ふりがな}
+									</td>
+								</tr>
+								<tr>
+									<th>年齢（*）</th>
+									<td>
+										<input type="text" name="年齢" value="{$年齢}" class="middle">
+										<input type="hidden" name="required[]" value="年齢">
+										{if:$required.年齢}
+										<div class="error"><em>{$required.年齢}</em></div>
+										{/if:$required.年齢}
+									</td>
+								</tr>
+								<tr>
+									<th>性別（*）</th>
+									<td>
+										<label>
+											<input type="radio" name="性別" value="男" {$checked.性別.男} {$checked.default}>
+											男
+										</label>
+										&nbsp;
+										<label>
+											<input type="radio" name="性別" value="女" {$checked.性別.女}>
+											女
+										</label>
+									</td>
+								</tr>
+								<tr>
+									<th>Eメール</th>
+									<td>
+										<input type="text" name="Eメール" value="{$Eメール}" class="middle">
+									</td>
+								</tr>
+								<tr>
+									<th>TEL（*）</th>
+									<td>
+										<input type="text" name="TEL" value="{$TEL}" class="middle">
+										<input type="hidden" name="required[]" value="TEL">
+										{if:$required.TEL}
+										<div class="error"><em>{$required.TEL}</em></div>
+										{/if:$required.TEL}
+									</td>
+								</tr>
+								<tr>
+									<th>郵便番号（*）</th>
+									<td>
+										<input type="text" name="郵便番号" value="{$郵便番号}" class="middle">
+										<input type="hidden" name="required[]" value="郵便番号">
+										{if:$required.郵便番号}
+										<div class="error"><em>{$required.郵便番号}</em></div>
+										{/if:$required.郵便番号}
+									</td>
+								</tr>
+								<tr>
+									<th>住所（*）</th>
+									<td>
+										<input type="text" name="住所" value="{$住所}" class="middle">
+										<input type="hidden" name="required[]" value="住所">
+										{if:$required.住所}
+										<div class="error"><em>{$required.住所}</em></div>
+										{/if:$required.住所}
+									</td>
+								</tr>
+								<tr>
+									<th>備考</th>
+									<td>
+										<textarea rows="6" name="備考" class="wide">{$備考}</textarea>
+									</td>
+								</tr>
+								<tr>
+									<th>プライバシーポリシー</th>
+									<td>
+										<label>
+											<input type="checkbox" name="プライバシーポリシー確認" value="true" {$checked.プライバシーポリシー確認.1}>
+											<a href="../../privacy" target="_blank"><u><i class="fa fa-hand-o-right"></i> プライバシーポリシー</u></a> を確認し、内容に同意します
+										</label>
+										<input type="hidden" name="required[]" value="プライバシーポリシー確認">
+										{if:$required.プライバシーポリシー確認}
+										<div class="error"><em>{$required.プライバシーポリシー確認}</em></div>
+										{/if:$required.プライバシーポリシー確認}
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="text-xs-left">
+							<input type="submit" value="入力内容を確認する" class="btn btn-primary">
+							<button type="reset" class="btn btn-outline-primary">クリア</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!--
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//	footer
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		-->
+		<div class="footer">
+			<div class="footer-nav-wrap">
+				<div class="container text-xs-center">
+					<div class="footer-nav clearfix">
+						<div class="footer-nav-item"><a href="/koshin/">トップページ</a></div>
+						<div class="footer-nav-item"><a href="/koshin/guide">会社案内</a></div>
+						<div class="footer-nav-item"><a href="/koshin/business">業務案内</a></div>
+						<br class="hidden-md-up"/>
+						<div class="footer-nav-item"><a href="/koshin/recruit">採用情報</a></div>
+						<div class="footer-nav-item"><a href="/koshin/inquiry">お問い合わせ</a></div>
+						<div class="footer-nav-item"><a href="/koshin/privacy">プライバシーポリシー</a></div>
+					</div>
+				</div>
+			</div>
+			<div class="container text-xs-center">
+
+				<div class="name">
+					株式会社興信建設
+				</div>
+				<div class="address">
+					東京都杉並区成田西3丁目2番4号<br>
+					TEL:03-3313-3307
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

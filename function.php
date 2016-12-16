@@ -25,7 +25,7 @@ function getFile() {
 	}
 
 	$file = "pages/{$file_name}.php";
-
+	
 	if (!is_readable($file)) {
 		$file = "pages/index.php";
 		$file_name = "index";

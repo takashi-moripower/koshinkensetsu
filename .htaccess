@@ -1,8 +1,8 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /kosin/
+RewriteBase /koshin/
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /kosin/index.php [L]
+RewriteRule . /koshin/index.php [L]
 </IfModule>
